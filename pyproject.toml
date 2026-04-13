@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mtg-viewer"
+version = "0.1.0"
+description = "Offline MTG card viewer with Scryfall-like search"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PySide6>=6.6",
+    "ijson>=3.2",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "types-requests"]
+
+[project.scripts]
+mtg-viewer = "mtg_viewer.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mtg_viewer*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.10"
